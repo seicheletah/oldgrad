@@ -1,1 +1,25 @@
-hi login~
+{% extends "base.jinja" %}
+
+{% block title %} Sign In {% endblock title %}
+
+{% block body %}
+<p>
+<form action="" method="post" novalidate>
+{{ loginform.hidden_tag() }}
+{{ loginform.username.label }}
+{{ loginform.username(size=30) }}<br>
+{% for error in loginform.username.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ loginform.password.label }}
+{{ loginform.password(size=30) }}<br>
+{% for error in loginform.password.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ loginform.remember_me.label }}
+{{ loginform.remember_me }}
+{{ loginform.submit.label }}
+{{ loginform.submit }}
+</form>
+</p>
+{% endblock body %}
