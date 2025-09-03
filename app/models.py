@@ -3,6 +3,7 @@ from typing import Optional
 import sqlalchemy as sql
 import sqlalchemy.orm as sqlorm
 from app import oldgrad_db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(oldgrad_db.Model): #needs to create 2 User table(with current company, position column)
     id: sqlorm.Mapped[int] = sqlorm.mapped_column(primary_key=True)
@@ -17,7 +18,12 @@ class User(oldgrad_db.Model): #needs to create 2 User table(with current company
     jobpost: sqlorm.WriteOnlyMapped['JobPost'] = sqlorm.relationship(back_populates='author')
     donations: sqlorm.WriteOnlyMapped['Donations'] = sqlorm.relationship(back_populates='author')
 
+    def set_password(self, password: str):
+        self.password_hash = generate_password_hash(password)
 
+    def check_password(self, password: str):
+        return check_password_hash(self.password_hash, password)
+    
     def __repr__(self):
         return f'<user> {self.name}'
     
