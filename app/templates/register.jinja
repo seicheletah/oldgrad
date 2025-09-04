@@ -1,0 +1,63 @@
+{% extends "base.jinja" %}
+
+{% block title %} Create new account {% endblock title %}
+
+{% block body %}
+
+<p>
+<form action="" method="post">
+{{ registrationform.hidden_tag() }}
+{{ registrationform.name.label }}
+{{ registrationform.name(size=30) }}<br>
+{% for error in registrationform.name.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ registrationform.email.label }}
+{{ registrationform.email(size=30) }}<br>
+{% for error in registrationform.email.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ registrationform.password.label }}
+{{ registrationform.password(size=30) }}<br>
+{% for error in registrationform.password.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ registrationform.rep_password.label }}
+{{ registrationform.rep_password(size=30) }}<br>
+{% for error in registrationform.rep_password.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ registrationform.phone_number.label }}
+{{ registrationform.phone_number(size=30) }}<br>
+{% for error in registrationform.phone_number.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ registrationform.branch.label }}
+{{ registrationform.branch(size=30) }}<br>
+{% for error in registrationform.branch.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ registrationform.location.label }}
+{{ registrationform.location(size=30) }}<br>
+{% for error in registrationform.location.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ registrationform.passout_year.label }}
+{{ registrationform.passout_year(size=4) }}<br>
+{% for error in registrationform.passout_year.errors %}
+    [{{ error }}]<br>
+{% endfor %}
+{{ registrationform.submit.label }}
+{{ registrationform.submit }}
+</form>
+</p>
+
+{% with alerts = get_flashed_messages()  %}
+{% if alerts %}
+    {% for alert in alerts %}
+        {{ alert }}
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock body %}
