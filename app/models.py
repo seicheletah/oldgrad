@@ -1,11 +1,14 @@
+#for database structure creation
 from datetime import datetime, timezone
 from typing import Optional
 import sqlalchemy as sql
 import sqlalchemy.orm as sqlorm
 from app import oldgrad_db
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from app import login_manager
 
-class User(oldgrad_db.Model): #needs to create 2 User table(with current company, position column)
+class User(UserMixin, oldgrad_db.Model): #needs to create 2 User table(with current company, position column)
     id: sqlorm.Mapped[int] = sqlorm.mapped_column(primary_key=True)
     name: sqlorm.Mapped[str] = sqlorm.mapped_column(sql.String(50), index=True)
     email: sqlorm.Mapped[str] = sqlorm.mapped_column(sql.String(20), index=True, unique=True)
@@ -60,3 +63,7 @@ class Donations(oldgrad_db.Model):
 
     def __repr__(self):
         return f'<ammount> {self.ammount}' #later add time too
+
+@login_manager.user_loader
+def load_user(id: str):
+    return oldgrad_db.session.get(User, int(id))

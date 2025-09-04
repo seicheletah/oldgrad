@@ -1,0 +1,16 @@
+{% extends "base.jinja" %}
+
+{% block title %} Events {% endblock title %}
+
+{% block body %}
+
+event page<br>
+{% with alerts = get_flashed_messages()  %}
+{% if alerts %}
+    {% for alert in alerts %}
+        {{ alert }}
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock body %}

@@ -3,12 +3,13 @@
 {% block title %} Sign In {% endblock title %}
 
 {% block body %}
+
 <p>
 <form action="" method="post" novalidate>
 {{ loginform.hidden_tag() }}
-{{ loginform.username.label }}
-{{ loginform.username(size=30) }}<br>
-{% for error in loginform.username.errors %}
+{{ loginform.email.label }}
+{{ loginform.email(size=30) }}<br>
+{% for error in loginform.email.errors %}
     [{{ error }}]<br>
 {% endfor %}
 {{ loginform.password.label }}
@@ -22,4 +23,13 @@
 {{ loginform.submit }}
 </form>
 </p>
+
+{% with alerts = get_flashed_messages()  %}
+{% if alerts %}
+    {% for alert in alerts %}
+        {{ alert }}
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
 {% endblock body %}
