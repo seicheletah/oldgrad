@@ -3,11 +3,17 @@
 {% block title %} Oldgrad {% endblock title %}
 
 {% block body %}
-
-<p>Join. Connect. Share.</p>
-<p>Help us build a vibrating community with our students and alumni. Mentor our students and lead them to become the best possible version of yourselves. Guide them with your industry leading skills to make them job ready.</p>
-
-
+<div class="column is-half m-6 pt-6">
+    <div class="content is-large">
+        <h1 class="title is-1 is-spaced">Join. Connect. Share.</h1>
+        <p class="subtitle is-4 has-text-justified">Help us build a vibrating community with our students and alumni. Mentor our students and lead them to become the best possible version of yourselves. Guide them with your industry leading skills to make them job ready.</p>
+    </div>
+</div>
+<div class="columns m-6">
+    <div class="column box is-size-5 m-2 p-6 has-text-justified has-text-weight-light is-family-monospace">Join us and help build a better community.</div>
+    <div class="column box is-size-5 m-2 p-6 has-text-justified has-text-weight-light is-family-monospace">Connect with our students get an oppurtunity to know our extraordinay talents and see what they are upto.</div>
+    <div class="column box is-size-5 m-2 p-6 has-text-justified has-text-weight-light is-family-monospace">Share you industry leading leardership skills and guide them to be the next world leader.</div>
+</div>
 {% with alerts = get_flashed_messages()  %}
 {% if alerts %}
     {% for alert in alerts %}

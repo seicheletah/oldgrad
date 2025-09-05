@@ -2,22 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> {% block title %} {% endblock title%} </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <style>
+    .navbar.has-shadow{ box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2) }
+    </style>
   </head>
   <body>
-    <nav> 
-          <a href="{{ url_for('events') }}">Events</a> 
-          <a href="{{ url_for('jobs') }}">Jobs</a>
-          <a href="{{ url_for('alumni') }}">Alumni</a>
-          <a href="{{ url_for('donations') }}">Donations</a>
-          <a href="{{ url_for('profile') }}">Profile</a>
-          <a href="{{ url_for('logout') }}">Logout</a>
-          <a href="{{ url_for('login') }}">Sign in</a>
-          <a href="{{ url_for('register') }}">Join us</a>
-
-    </nav>
+    <div class="block">
+      <nav class="navbar has-shadow" role="navigation" aria-label="main navigation"> 
+        <div class="navbar-brand">
+          <a class="navbar-item" href="{{ url_for('index') }}"><img src="https://img.icons8.com/hands/100/checkmark.png" alt="Home"/></a>
+        </div>
+        <div class="navbar-menu is-active">
+          <div class="navbar-start">
+            <a class="navbar-item is-tab" href="{{ url_for('events') }}">Events</a> 
+            <a class="navbar-item is-tab" href="{{ url_for('jobs') }}">Jobs</a>
+            <a class="navbar-item is-tab" href="{{ url_for('alumni') }}">Alumni</a>
+            <a class="navbar-item is-tab" href="{{ url_for('donations') }}">Donations</a>
+            <a class="navbar-item is-tab" href="{{ url_for('profile') }}">Profile</a>
+          </div>
+          <div class="navbar-end">
+            <a class="navbar-item is-tab" href="{{ url_for('logout') }}">Logout</a>
+            <a class="navbar-item is-tab" href="{{ url_for('login') }}">Sign in</a>
+            <a class="navbar-item is-tab" href="{{ url_for('register') }}">Join us</a>
+          </div>
+        </div>
+      </nav>
+    </div>
     {% block body %} {% endblock %}
+    <footer class="footer is-size-7" style="padding-top: 0.4rem; padding-bottom: 0.5rem;">
+      <div class="columns">
+        <div class="column is-one-quarter m-1">© OldGrad 2025</div>
+        <div class="column has-text-right m-1">
+          <a class="m-1" href="">About</a>
+          <a class="m-1" href="">Help</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
